@@ -2,7 +2,7 @@
 pragma solidity ^0.8.9;
 
 // Uncomment this line to use console.log
-// import "hardhat/console.sol";
+ import "hardhat/console.sol";
 
 contract VotingBooth {
 
@@ -19,12 +19,15 @@ contract VotingBooth {
     uint256 public voteCount;
 
     struct _Member {
-        uint id;
+        uint256 id;
         string name;
         string sign;
     }
 
+    // Member event will be triggered when a member is created
     event Member(uint id, string name, string sign);
+
+    // Vote event will be triggered when someone vote for members listed
     event Vote(uint id, address voter);
 
     constructor() {
@@ -53,6 +56,9 @@ contract VotingBooth {
 
         // reject invalid address
         require(msg.sender != address(0));
+
+        // prevent duplicate votes
+        require(votes[msg.sender] != _id);
 
         // update vote count
         voteCount++;

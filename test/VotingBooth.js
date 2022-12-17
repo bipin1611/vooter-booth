@@ -98,6 +98,19 @@ describe("VotingBooth", function () {
             })
 
         });
+        describe('Failure', async () => {
+            it('can not make duplicate vote', async () => {
+
+
+                transaction = await booth.connect(deployer).vote(1)
+                await transaction.wait()
+
+                await expect(booth.connect(deployer).vote(1)).to.reverted
+
+            })
+
+        });
+
 
     })
 
