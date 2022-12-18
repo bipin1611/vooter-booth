@@ -42,7 +42,6 @@ const Menu = () => {
                         <Nav.Link disabled>Home</Nav.Link>
 
                         {chainId && (
-
                             <Form.Select name='network' aria-label="Default select example"
                                          value={config[chainId] ? `0x${chainId.toString(16)}` : `0`}
                                          onChange={networkHandler}>
