@@ -82,6 +82,7 @@ describe("VotingBooth", function () {
 
             })
 
+
             it('must be emit Vote event', async () => {
 
                 transaction = await booth.connect(deployer).vote(1)

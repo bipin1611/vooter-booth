@@ -6,3 +6,7 @@
 section{
   padding: 50px 10px;
 }
+
+.w-30{
+  width: 30% !important;
+}

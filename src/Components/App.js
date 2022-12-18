@@ -15,9 +15,7 @@ import Body from "./Body";
 function App() {
 
     const dispatch = useDispatch()
-    const contract = useSelector(state => state.vote.loaded)
     const account = useSelector(state => state.provider.account)
-    const owner = useSelector(state => state.vote.owner)
 
     const loadBlockchainData = async () => {
         // connect blockchain network
@@ -56,9 +54,7 @@ function App() {
 
             <Menu/>
 
-            {owner === account && (
-                <Body/>
-            )}
+            <Body/>
         </div>
     );
 }

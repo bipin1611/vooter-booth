@@ -35,6 +35,9 @@ const VOTE_STATE = {
     allMembers: {
         data: []
     },
+    votes: {
+        data: []
+    },
     transaction: {
         isInProgress: false,
         isSuccess: false,
@@ -120,6 +123,7 @@ export const vote = (state = VOTE_STATE, action) => {
                 events: [action.event, ...state.events]
             }
 
+
         case 'MEMBERS_LOADED':
             return {
                 ...state,
@@ -128,6 +132,40 @@ export const vote = (state = VOTE_STATE, action) => {
                 },
             }
 
+
+        case 'VOTES_LOADED':
+            return {
+                ...state,
+                votes: {
+                    data: action.votes
+                },
+            }
+
+
+        case 'VOTE_ADDED':
+
+            index = state.votes.data.findIndex(vote => vote.id.toString() === action.vote.id.toString())
+
+            if (index === -1) {
+                data = [...state.votes.data, action.vote]
+            } else {
+                data = state.votes.data
+            }
+
+            return {
+                ...state,
+                votes: {
+                    ...state.votes,
+                    data
+                },
+                transferInProgress: false,
+                transaction: {
+                    isInProgress: false,
+                    isSuccess: true,
+                    isFail: false,
+                },
+                events: [action.event, ...state.events]
+            }
 
         default:
             return state

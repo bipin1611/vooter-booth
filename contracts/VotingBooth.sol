@@ -58,7 +58,7 @@ contract VotingBooth {
         require(msg.sender != address(0));
 
         // prevent duplicate votes
-        require(votes[msg.sender] != _id);
+        require(votes[msg.sender] != _id, "Can not make duplicate vote");
 
         // update vote count
         voteCount++;
@@ -69,4 +69,5 @@ contract VotingBooth {
 
         return true;
     }
+
 }

@@ -50,8 +50,12 @@ export const subscriberEvents = (vote, dispatch) => {
 
     vote.on('Member', (id, name, sign, event) => {
         const member = event.args
-        console.log(member)
         dispatch({type: "MEMBER_ADDED", member, event})
+    })
+
+    vote.on('Vote', (id, voter, event) => {
+        const vote = event.args
+        dispatch({type: "VOTE_ADDED", vote, event})
     })
 
 }
@@ -73,7 +77,6 @@ export const canAccessCreateMember = async (vote, account, dispatch) => {
 
     const owner = await vote.owner()
 
-
     dispatch({type: "CAN_ACCESS_MEMBER", owner})
 }
 
@@ -94,5 +97,37 @@ export const createMember = async (vote, provider, name, sign, dispatch) => {
         dispatch({type: 'MEMBER_FAIL'})
 
     }
+
+}
+
+
+export const doVote = async (vote, provider, id, dispatch) => {
+
+    dispatch({type: 'VOTE_REQUEST'})
+
+    try {
+
+        let transaction
+        const signer = await provider.getSigner()
+
+        transaction = await vote.connect(signer).vote(id)
+        await transaction.wait()
+
+    } catch (e) {
+        dispatch({type: 'VOTE_FAIL'})
+
+    }
+
+}
+
+
+export const loadVotes = async (vote, provider, dispatch) => {
+
+    const block = await provider.getBlockNumber()
+    const getVotes = await vote.queryFilter('Vote', 0, block)
+    const votes = getVotes.map(event => event.args)
+
+
+    dispatch({type: 'VOTES_LOADED', votes})
 
 }
