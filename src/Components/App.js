@@ -5,12 +5,13 @@ import {
     loadAccount,
     loadContract,
     loadNetwork,
-    loadProvider,
+    loadProvider, loadVotes,
     subscriberEvents
 } from "../store/interactions";
 import {useDispatch, useSelector} from "react-redux";
 import Menu from "./Navbar";
 import Body from "./Body";
+import AlertMessage from "./AlertMessage";
 
 function App() {
 
@@ -44,6 +45,8 @@ function App() {
 
         canAccessCreateMember(vote, account, dispatch)
 
+        loadVotes(vote, provider, dispatch)
+
     }
     useEffect(() => {
         loadBlockchainData()
@@ -55,6 +58,8 @@ function App() {
             <Menu/>
 
             <Body/>
+
+            <AlertMessage />
         </div>
     );
 }

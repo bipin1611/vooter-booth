@@ -1,12 +1,19 @@
 
-.pr-10{
-  padding-right: 10px;
+.pr-10 {
+    padding-right: 10px;
 }
 
-section{
-  padding: 50px 10px;
+section {
+    padding: 50px 10px;
 }
 
-.w-30{
-  width: 30% !important;
+.w-30 {
+    width: 30% !important;
+}
+
+.notification {
+    position: fixed;
+    bottom: 35px;
+    right: 10px;
+    z-index: 1000;
 }

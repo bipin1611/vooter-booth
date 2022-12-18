@@ -5,9 +5,25 @@
     },
     "deployer": {
       "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
-    }
+    },
+    "exploreURL": "#"
   },
   "5": {
-
+    "vote": {
+      "address": "0x40c8DA7f86059971589388D347eF5b48E62F80Ba"
+    },
+    "deployer": {
+      "address": "0xA3f8d1766609c3fEFc6424b3c2B835AD9b7f9e31"
+    },
+    "exploreURL": "https://goerli.etherscan.io/"
+  },
+  "80001": {
+    "vote": {
+      "address": "0x4f5b5E4C0d279cdB5307fd99BA4762d4011a6346"
+    },
+    "deployer": {
+      "address": "0xA3f8d1766609c3fEFc6424b3c2B835AD9b7f9e31"
+    },
+    "exploreURL": "https://mumbai.polygonscan.com/"
   }
 }

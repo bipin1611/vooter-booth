@@ -49,7 +49,7 @@ const Menu = () => {
                                 <option value="0" disabled>Choose Network</option>
                                 <option value="0x7A69">Localhost</option>
                                 <option value="0x5">Goerli</option>
-                                <option value="3">Polygon Mumbai</option>
+                                <option value="0x13881">Polygon Mumbai</option>
                             </Form.Select>
                         )}
 

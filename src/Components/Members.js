@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {useDispatch, useSelector} from "react-redux";
-import {doVote, loadVotes} from "../store/interactions";
+import {doVote} from "../store/interactions";
 import {membersSelector} from "../store/selectores";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -19,7 +19,6 @@ function Members() {
     const vote = useSelector(state => state.vote.contract)
     const provider = useSelector(state => state.provider.connection)
 
-    loadVotes(vote, provider, dispatch)
 
     const submitHandler = (e, member) => {
         e.preventDefault()
