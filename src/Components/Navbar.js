@@ -44,7 +44,7 @@ const Menu = () => {
                         {chainId && (
 
                             <Form.Select name='network' aria-label="Default select example"
-                                         value={config[chainId] ? `0x${chainId.toString()}` : `0`}
+                                         value={config[chainId] ? `0x${chainId.toString(16)}` : `0`}
                                          onChange={networkHandler}>
                                 <option value="0" disabled>Choose Network</option>
                                 <option value="0x7A69">Localhost</option>
